@@ -34,6 +34,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'rspec-its'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 end
 
 group :development do
