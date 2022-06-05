@@ -1,0 +1,10 @@
+<%= form_tag sessions_path, id: "switch_user_form" do %>
+  <%= label_tag(:user_id, "切換使用者") %>
+  <%= select_tag :user_id, all_users_options %>
+<% end %>
+
+<script>
+  document.querySelector("#switch_user_form").addEventListener("change", function(){
+      this.submit();
+  })
+</script>
