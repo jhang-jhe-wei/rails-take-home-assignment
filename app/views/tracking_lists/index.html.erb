@@ -1,5 +1,10 @@
 <p>現在使用者為： <%= @current_user.name %></p>
 <%= render 'sessions/form' %>
-<button>點我建立新的追蹤清單</button>
+<%= button_to '點我建立新的追蹤清單', new_tracking_list_path, method: :get %>
 <hr>
-<p>你還沒有建立股票清單哦！</p>
+<% if @tracking_lists.empty? %>
+  <p>你還沒有建立股票清單哦！</p>
+<% end %>
+<% @tracking_lists.each_with_index do |tracking_list, index| %>
+  <%= render 'tracking_list', tracking_list: tracking_list, show_down_link: index != @tracking_lists.size - 1, show_up_link: index !=0 %>
+<% end %>
