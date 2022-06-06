@@ -55,10 +55,10 @@ RSpec.describe TrackingList, type: :model do
         user = User.create(name: "tester")
         user.tracking_lists.create(name: "list1")
       end
-      let (:tracking_list) { TrackingList.first }
+      let! (:tracking_list) { TrackingList.first }
+      before { tracking_list.down }
       subject { TrackingList.find_by_id(tracking_list.id) }
       its(:row_order) do
-        tracking_list.down
         is_expected.to eq(1)
       end
     end
