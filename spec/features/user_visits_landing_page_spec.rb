@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'User visits landing page' do
-  context 'When current user does not have tracking list' do
+  context 'when current user does not have tracking list' do
     before do
       create(:user)
       visit root_path
@@ -18,12 +18,14 @@ describe 'User visits landing page' do
     end
   end
 
-  context 'When current user has many tracking list' do
-    let (:current_user) { create(:user) }
+  context 'when current user has many tracking list' do
+    let(:current_user) { create(:user) }
+
     before do
       create_list(:tracking_list, 3, user_id: current_user.id)
       visit root_path
     end
+
     it 'expects to see their all tracking lists' do
       expect(page).to have_text(/list\d/, count: 3)
     end
