@@ -27,7 +27,11 @@ describe 'User creates a tracking list' do
 
   context 'Other user' do
     before do
-      create(:user)
+      create_list(:user, 2)
+      visit root_path
+      click_button('點我建立新的追蹤清單')
+      fill_in 'Name', with: "list1"
+      click_button('Create Tracking list')
       select User.second.name, from: '切換使用者'
     end
 
