@@ -5,9 +5,10 @@ class TrackingList < ApplicationRecord
   def down
     TrackingList.transaction do
       current_order = self.row_order
-      if last_smaller_order_tracking_list
-        self.update!(row_order: last_smaller_order_tracking_list.row_order)
-        last_smaller_order_tracking_list.update!(row_order: current_order)
+      list = last_smaller_order_tracking_list
+      if list
+        self.update!(row_order: list.row_order)
+        list.update!(row_order: current_order)
       end
     end
   end
@@ -24,6 +25,6 @@ class TrackingList < ApplicationRecord
   end
 
   def last_smaller_order_tracking_list
-    @last_smaller_order_tracking_list ||= user.tracking_lists.where("row_order < ?", self.row_order).order(:row_order).last
+    user.tracking_lists.where("row_order < ?", self.row_order).order(:row_order).last
   end
 end
