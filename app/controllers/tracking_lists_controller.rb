@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TrackingListsController < ApplicationController
-  before_action :set_tracking_list, only: [:edit, :update, :destroy, :down]
+  before_action :set_tracking_list, only: [:edit, :update, :destroy, :down, :up]
 
   def index
     @tracking_lists = current_user.tracking_lists.order(row_order: :DESC)
@@ -38,6 +38,11 @@ class TrackingListsController < ApplicationController
 
   def down
     @tracking_list.down
+    redirect_to tracking_lists_url
+  end
+
+  def up
+    @tracking_list.up
     redirect_to tracking_lists_url
   end
 

@@ -5,4 +5,8 @@
   <% if show_down_link %>
     <%= link_to '下移', down_tracking_list_path(tracking_list.id), method: :post %>
   <% end %>
+  <% if show_up_link %>
+    <%= link_to '上移', up_tracking_list_path(tracking_list.id), method: :post %>
+  <% end %>
+
 </div>

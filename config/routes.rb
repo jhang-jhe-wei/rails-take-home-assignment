@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :tracking_lists, except: :show do
     member do
       post 'down'
+      post 'up'
     end
   end
 end

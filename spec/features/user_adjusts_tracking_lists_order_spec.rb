@@ -23,4 +23,15 @@ describe 'User adjusts tracking lists order' do
       expect(all('div.tracking-list')[1]).to have_text(TrackingList.last.name)
     end
   end
+
+  context 'When current user up the last tracking list in the page' do
+    let (:last_tracking_list) { all('div.tracking-list')[-1] }
+    before do
+      last_tracking_list.click_link("上移")
+    end
+
+    it 'expects to see the tracking list move to the last second position' do
+      expect(all('div.tracking-list')[-2]).to have_text(TrackingList.first.name)
+    end
+  end
 end
