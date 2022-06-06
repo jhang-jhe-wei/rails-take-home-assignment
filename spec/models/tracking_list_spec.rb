@@ -63,4 +63,40 @@ RSpec.describe TrackingList, type: :model do
       end
     end
   end
+
+  describe '#up' do
+    context 'When current user has 10 tracking lists' do
+      before do
+        user = create(:user)
+        create_list(:tracking_list, 10, user_id: user.id)
+      end
+
+      context 'Order of the tracking list is 9, after up' do
+        let! (:tracking_list) { TrackingList.find_by_row_order(9) }
+        before { tracking_list.up }
+        subject { TrackingList.order(:id).pluck(:row_order) }
+        it { is_expected.to eq([1, 2, 3, 4, 5, 6, 7, 8, 10, 9]) }
+      end
+
+      context 'Order of the tracking list is 10, after up' do
+        let! (:tracking_list) { TrackingList.find_by_row_order(10) }
+        before { tracking_list.up }
+        subject { TrackingList.order(:id).pluck(:row_order) }
+        it { is_expected.to eq([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) }
+      end
+    end
+
+    context 'When current user only has one tracking list, after up' do
+      before do
+        user = User.create(name: "tester")
+        user.tracking_lists.create(name: "list1")
+      end
+      let (:tracking_list) { TrackingList.first }
+      before { tracking_list.up }
+      subject { TrackingList.find_by_id(tracking_list.id) }
+      its(:row_order) do
+        is_expected.to eq(1)
+      end
+    end
+  end
 end
