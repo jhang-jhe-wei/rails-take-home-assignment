@@ -32,7 +32,7 @@ RSpec.describe TrackingList, type: :model do
   describe '#down' do
     context 'When current user has 10 tracking lists' do
       before do
-        user = User.create(name: "tester")
+        user = create(:user)
         create_list(:tracking_list, 10, user_id: user.id)
       end
       context 'Order of the tracking list is 9, after down' do
