@@ -2,4 +2,7 @@
   <%= tracking_list.name %>
   <%= link_to '編輯', edit_tracking_list_path(tracking_list.id) %>
   <%= link_to '刪除', tracking_list_path(tracking_list.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if show_down_link %>
+    <%= link_to '下移', down_tracking_list_path(tracking_list.id), method: :post %>
+  <% end %>
 </div>

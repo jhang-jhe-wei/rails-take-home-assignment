@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class TrackingListsController < ApplicationController
-  before_action :set_tracking_list, only: [:edit, :update, :destroy]
+  before_action :set_tracking_list, only: [:edit, :update, :destroy, :down]
 
   def index
-    @tracking_lists = current_user.tracking_lists.all
+    @tracking_lists = current_user.tracking_lists.order(row_order: :DESC)
   end
 
   def new
@@ -34,6 +34,11 @@ class TrackingListsController < ApplicationController
   def destroy
     @tracking_list.destroy
     redirect_to tracking_lists_url, notice: '追蹤清單已成功刪除'
+  end
+
+  def down
+    @tracking_list.down
+    redirect_to tracking_lists_url
   end
 
   private
