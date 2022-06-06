@@ -9,6 +9,7 @@ end
 Capybara.javascript_driver = :selenium_chrome
 Capybara.default_max_wait_time = 1
 Capybara.default_driver = :selenium_chrome_headless
+# Capybara.default_driver = :selenium_chrome
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false

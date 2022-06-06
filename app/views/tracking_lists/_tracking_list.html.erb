@@ -1,4 +1,5 @@
 <div class="tracking-list">
   <%= tracking_list.name %>
   <%= link_to '編輯', edit_tracking_list_path(tracking_list.id) %>
+  <%= link_to '刪除', tracking_list_path(tracking_list.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

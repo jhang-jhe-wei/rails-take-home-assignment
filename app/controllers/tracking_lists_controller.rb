@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TrackingListsController < ApplicationController
-  before_action :set_tracking_list, only: [:edit, :update]
+  before_action :set_tracking_list, only: [:edit, :update, :destroy]
 
   def index
     @tracking_lists = current_user.tracking_lists.all
@@ -29,6 +29,11 @@ class TrackingListsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @tracking_list.destroy
+    redirect_to tracking_lists_url, notice: '追蹤清單已成功刪除'
   end
 
   private
