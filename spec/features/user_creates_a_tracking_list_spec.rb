@@ -15,6 +15,12 @@ describe 'User creates a tracking list' do
     expect(page).to have_text('list1')
   end
 
+
+  it 'expects to see new tracking stock record link' do
+    expect(page).to have_link('點我新增追蹤股')
+  end
+
+
   it 'expects to see created successfully message' do
     expect(page).to have_text('追蹤清單已建立')
   end
