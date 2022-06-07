@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>股號</th>
+    <th>股名</th>
+  </tr>
+  <% Stock.all.each do |stock| %>
+    <tr>
+        <td><%= stock.code %></td>
+        <td><%= stock.name %></td>
+    </tr>
+  <% end %>
+</table>

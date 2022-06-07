@@ -1,0 +1,9 @@
+tsmc:
+  name: 台積電
+  code: 2330
+asus:
+  name: 華碩
+  code: 2357
+evergreen:
+  name: 長榮
+  code: 2603

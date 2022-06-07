@@ -1,0 +1,23 @@
+<%= form_with(model: tracking_stock_record, url: [tracking_list, tracking_stock_record], local: true) do |form| %>
+  <% if tracking_stock_record.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% tracking_stock_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>新增追蹤股於 <%= tracking_list.name %></p>
+
+
+  <div class="mb-4">
+    <%= form.label :code, '請輸入股號' %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

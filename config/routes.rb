@@ -8,5 +8,6 @@ Rails.application.routes.draw do
       post 'down'
       post 'up'
     end
+    resources :tracking_stock_records, only: %i[index new create destroy], shallow: true
   end
 end
