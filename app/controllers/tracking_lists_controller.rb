@@ -4,7 +4,7 @@ class TrackingListsController < ApplicationController
   before_action :set_tracking_list, only: %i[edit update destroy down up]
 
   def index
-    @tracking_lists = current_user.tracking_lists.order(row_order: :DESC)
+    @tracking_lists = current_user.tracking_lists.includes(:stocks).order(row_order: :DESC)
   end
 
   def new
