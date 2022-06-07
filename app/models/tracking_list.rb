@@ -5,6 +5,7 @@ class TrackingList < ApplicationRecord
   before_create :calculate_row_order
   has_many :tracking_stock_records, dependent: :destroy
   has_many :stocks, through: :tracking_stock_records
+  validates :name, presence: true
 
   def down
     TrackingList.transaction do

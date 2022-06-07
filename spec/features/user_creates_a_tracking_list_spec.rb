@@ -29,6 +29,16 @@ describe 'User creates a tracking list' do
     expect(page).not_to have_content('你還沒有建立股票清單哦！')
   end
 
+  context 'without name' do
+    before do
+      click_button('點我建立新的追蹤清單')
+      click_button('Create Tracking list')
+    end
+    it 'expects to see name cannot be blank' do
+      expect(page).to have_text('Name can\'t be blank')
+    end
+  end
+
   context 'when switches to other user' do
     before do
       create_list(:user, 2)
