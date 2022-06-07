@@ -1,4 +1,4 @@
-<%= form_with(model: tracking_list) do |form| %>
+<%= form_with(model: tracking_list, local: true) do |form| %>
   <% if tracking_list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tracking_list.errors.count, "error") %> prohibited this tracking_list from being saved:</h2>
