@@ -35,4 +35,15 @@ describe 'User creates a tracking stock record' do
       expect(all('div.tracking-list')[0]).to have_text(Stock.first.name)
     end
   end
+
+  context 'when user fill in the incorrect stock code' do
+    before do
+      fill_in '請輸入股號', with: '50'
+      click_button('Create Tracking stock record')
+    end
+
+    it 'expects to see stock does not exist message in the current page' do
+      expect(page).to have_text('Stock must exist')
+    end
+  end
 end

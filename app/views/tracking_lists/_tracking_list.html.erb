@@ -13,7 +13,9 @@
   </div>
   <div>
     <% tracking_list.tracking_stock_records.each do |record| %>
-      <%= "#{record.stock.code} - #{record.stock.name}" %>
+      <p>
+        <%= "#{record.stock.code} - #{record.stock.name}" %>
+      </p>
     <% end %>
   </div>
   <%= link_to '點我新增追蹤股', new_tracking_list_tracking_stock_record_path(tracking_list.id) %>
