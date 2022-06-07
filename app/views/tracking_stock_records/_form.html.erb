@@ -1,0 +1,22 @@
+<%= form_with(model: tracking_stock_record, url: [tracking_list, tracking_stock_record]) do |form| %>
+  <% if tracking_stock_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tracking_stock_record.errors.count, "error") %> prohibited this tracking_stock_record from being saved:</h2>
+
+      <ul>
+        <% tracking_stock_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :code, '請輸入股號' %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
