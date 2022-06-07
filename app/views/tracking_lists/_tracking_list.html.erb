@@ -11,11 +11,14 @@
       <%= link_to '上移', up_tracking_list_path(tracking_list.id), method: :post %>
     <% end %>
   </div>
-  <div>
-    <% tracking_list.stocks.each do |stock| %>
-      <p>
-        <%= "#{stock.code} - #{stock.name}" %>
-      </p>
+  <div class="tracking-stock-records">
+    <% tracking_list.tracking_stock_records.each do |record| %>
+      <div class="tracking-stock-record">
+        <p>
+        <%= "#{record.stock.code} - #{record.stock.name}" %>
+        <%= link_to '刪除', tracking_stock_record_path(record.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
     <% end %>
   </div>
   <%= link_to '點我新增追蹤股', new_tracking_list_tracking_stock_record_path(tracking_list.id) %>
