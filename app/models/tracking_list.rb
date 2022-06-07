@@ -3,6 +3,8 @@
 class TrackingList < ApplicationRecord
   belongs_to :user
   before_create :calculate_row_order
+  has_many :tracking_stock_records, dependent: :destroy
+  has_many :stock, through: :tracking_stock_records
 
   def down
     TrackingList.transaction do

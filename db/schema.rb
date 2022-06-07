@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_135046) do
+ActiveRecord::Schema.define(version: 2022_06_07_035241) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2022_06_06_135046) do
     t.index ["user_id"], name: "index_tracking_lists_on_user_id"
   end
 
+  create_table "tracking_stock_records", force: :cascade do |t|
+    t.integer "tracking_list_id", null: false
+    t.integer "stock_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_tracking_stock_records_on_stock_id"
+    t.index ["tracking_list_id"], name: "index_tracking_stock_records_on_tracking_list_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -35,4 +44,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_135046) do
   end
 
   add_foreign_key "tracking_lists", "users"
+  add_foreign_key "tracking_stock_records", "stocks"
+  add_foreign_key "tracking_stock_records", "tracking_lists"
 end
