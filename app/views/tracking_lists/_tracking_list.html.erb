@@ -12,9 +12,9 @@
     <% end %>
   </div>
   <div>
-    <% tracking_list.tracking_stock_records.each do |record| %>
+    <% tracking_list.stocks.each do |stock| %>
       <p>
-        <%= "#{record.stock.code} - #{record.stock.name}" %>
+        <%= "#{stock.code} - #{stock.name}" %>
       </p>
     <% end %>
   </div>

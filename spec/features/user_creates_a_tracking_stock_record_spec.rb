@@ -46,4 +46,17 @@ describe 'User creates a tracking stock record' do
       expect(page).to have_text('Stock must exist')
     end
   end
+
+  context 'when user fill in the stock code which already in the same tracking list' do
+    before do
+      current_user.tracking_lists.first.stocks << Stock.first
+      fill_in '請輸入股號', with: Stock.first.code
+      click_button('Create Tracking stock record')
+    end
+
+    it 'expects to see stock aleady in the same tracking list in the current page' do
+      expect(page).to have_text('Stock aleady exists')
+    end
+  end
+
 end

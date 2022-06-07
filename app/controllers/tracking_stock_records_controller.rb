@@ -1,6 +1,10 @@
 class TrackingStockRecordsController < ApplicationController
   before_action :set_tracking_list, only: [:new, :create]
 
+  def index
+    redirect_to new_tracking_list_tracking_stock_record_url
+  end
+
   def new
     @tracking_stock_record = @tracking_list.tracking_stock_records.build
   end
