@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TrackingStockRecord < ApplicationRecord
   belongs_to :tracking_list
   belongs_to :stock
@@ -5,7 +7,8 @@ class TrackingStockRecord < ApplicationRecord
   validate :the_list_cannot_have_the_same_stock_number
 
   private
+
   def the_list_cannot_have_the_same_stock_number
-    errors.add(:stock_id, "aleady exists") if self.tracking_list.stocks.find_by_id(stock_id)
+    errors.add(:stock_id, 'aleady exists') if tracking_list.stocks.find_by(id: stock_id)
   end
 end

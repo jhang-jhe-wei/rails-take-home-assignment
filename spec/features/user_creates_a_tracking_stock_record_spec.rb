@@ -4,7 +4,8 @@ require 'rails_helper'
 
 describe 'User creates a tracking stock record' do
   fixtures :stocks
-  let (:current_user) { create(:user) }
+  let(:current_user) { create(:user) }
+
   before do
     create(:tracking_list, user_id: current_user.id)
     visit root_path
@@ -16,7 +17,7 @@ describe 'User creates a tracking stock record' do
   end
 
   it 'expect to see tracking list name on the page' do
-    #need to improve
+    # need to improve
     sleep(1)
     expect(page).to have_text(TrackingList.first.name)
   end
@@ -58,5 +59,4 @@ describe 'User creates a tracking stock record' do
       expect(page).to have_text('Stock aleady exists')
     end
   end
-
 end
