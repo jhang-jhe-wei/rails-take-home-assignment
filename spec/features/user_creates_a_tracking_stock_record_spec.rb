@@ -14,4 +14,8 @@ describe 'User creates a tracking stock record' do
   it 'expects to see the stock list on the page' do
     Stock.all.each { |stock| expect(page).to have_text(stock.name) }
   end
+
+  it 'expect to see tracking list name on the page' do
+    expect(page).to have_text(TrackingList.first.name)
+  end
 end
