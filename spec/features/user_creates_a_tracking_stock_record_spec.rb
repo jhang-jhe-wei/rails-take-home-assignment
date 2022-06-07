@@ -16,6 +16,8 @@ describe 'User creates a tracking stock record' do
   end
 
   it 'expect to see tracking list name on the page' do
+    #need to improve
+    sleep(1)
     expect(page).to have_text(TrackingList.first.name)
   end
 
