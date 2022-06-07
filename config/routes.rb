@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       post 'down'
       post 'up'
     end
-    resources :tracking_stock_records, only: [:new], shallow: true
+    resources :tracking_stock_records, only: [:new, :create], shallow: true
   end
 end

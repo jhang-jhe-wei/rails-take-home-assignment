@@ -18,4 +18,19 @@ describe 'User creates a tracking stock record' do
   it 'expect to see tracking list name on the page' do
     expect(page).to have_text(TrackingList.first.name)
   end
+
+  context 'when user fill in the correct stock code' do
+    before do
+      fill_in '請輸入股號', with: Stock.first.code
+      click_button('Create Tracking stock record')
+    end
+
+    it 'expects to see create successfully message in the landing page' do
+      expect(page).to have_text('已加入追蹤清單')
+    end
+
+    it 'expects to see stock list in the tracking list' do
+      expect(all('div.tracking-list')[0]).to have_text(Stock.first.name)
+    end
+  end
 end

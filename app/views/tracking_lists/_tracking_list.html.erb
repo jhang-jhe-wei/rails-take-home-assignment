@@ -11,5 +11,10 @@
       <%= link_to '上移', up_tracking_list_path(tracking_list.id), method: :post %>
     <% end %>
   </div>
+  <div>
+    <% tracking_list.tracking_stock_records.each do |record| %>
+      <%= "#{record.stock.code} - #{record.stock.name}" %>
+    <% end %>
+  </div>
   <%= link_to '點我新增追蹤股', new_tracking_list_tracking_stock_record_path(tracking_list.id) %>
 </div>
